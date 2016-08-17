@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html data-ng-app="todoApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.0.3/firebase.js"></script>
+  <script src="https://cdn.firebase.com/libs/angularfire/2.0.0/angularfire.min.js"></script>
+
+
+  <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+  <script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyARapLMvNuZTGzRuuUeqfztD_U4u2A7GUo",
+    authDomain: "fir-project1-f1b69.firebaseapp.com",
+    databaseURL: "https://fir-project1-f1b69.firebaseio.com",
+    storageBucket: "fir-project1-f1b69.appspot.com",
+  };
+  firebase.initializeApp(config);
+  </script>
+
+
+  <script src="app.js"></script>
+</head>
+<body data-ng-controller="TodoController as vm">
+
+  <h1>Todos</h1>
+  <div data-ng-repeat="todo in vm.todos">
+    <input type="text" data-ng-model="todo.text"
+    data-ng-change="vm.update(todo)">
+    <button data-ng-click="vm.destroy(todo)">X</button>
+  </div>
+  <form data-ng-submit="vm.newTodo()">
+    <input data-ng-model="vm.newTodoText">
+    <button type="submit"> + </button>
+  </form>
+</body>
+</html>
